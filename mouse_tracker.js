@@ -1,34 +1,29 @@
 window.onload = () => {
 
+    const half_y = window.innerHeight / 2;
+    const half_x = window.innerWidth / 2;
+
     document.addEventListener("mousemove", trackMouse);
 
     var sprite = document.getElementById("tracker");
-    originX = sprite.getBoundingClientRect().x;
-    originY = sprite.getBoundingClientRect().y;
+    originX = sprite.getBoundingClientRect().x - half_x;
+    originY = sprite.getBoundingClientRect().y - half_y;
 
-    var ghost = document.getElementById("tracker");
-    ghost.style.position = "absolute";
-    const top = window.innerHeight / 2;
-    const left = window.innerWidth / 2;
-    var ghostXY = {
-        left: ghost.style.left,
-        top: ghost.style.top
-    };
-    console.log(ghostXY.left);
-    console.log(ghostXY.top);
+    var rotation_angle = -1;
 
     function trackMouse(event) {
 
-        var x = event.pageY
-        var y = event.pageX;
+        var x = event.pageX - half_x;
+        var y = (-1) * (event.pageY - half_y);
+
         var diffy = originY - y;
         var diffx = originX - x;
-        console.log(`diffy: ${diffy}, diffx: ${diffx}`);
 
-        ghost.style.left = x + left;
-        ghost.style.top = y + top;
+        // console.log(`origin X: ${originX}, origin Y: ${originY}`);
+        // console.log(`x: ${x}, y: ${y}, diffy: ${diffy}, diffx: ${diffx} angle: ${rotation_angle}`);
 
-        var rotation_angle = (180 * Math.atan((diffy) / (diffx)) / Math.PI);
+
+        rotation_angle = (180 * Math.atan((diffy) / (diffx)) / Math.PI);
         //breaks when we do division by zero
 
         //console.log(`ra:{ ${rotation_angle}} `)
@@ -40,8 +35,8 @@ window.onload = () => {
         else if (diffy < 0 && diffx > 0) {
             rotation_angle -= 180;
         }
-
-        console.log(`origin X: ${originX}, origin Y: ${originY}, x: ${x}, y: ${y}, angle: ${rotation_angle}`);
-        sprite.setAttribute("style", "transform: rotate(" + rotation_angle + "deg)");
+        rotation = "rotate(" + rotation_angle + "deg)";
+        sprite.style.transform = rotation;
+        // sprite.setAttribute("style", "transform: rotate(" + rotation_angle + "deg)");
     }
 }
