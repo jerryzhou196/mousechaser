@@ -1,5 +1,5 @@
 const SPEED = 4;
-//test
+
 window.onload = () => {
     var x;
     var y;
