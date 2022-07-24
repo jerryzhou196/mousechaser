@@ -1,4 +1,4 @@
-# mouse tracker
+# mouse chaser
 made with raw javascript. 
 thanks william for the idea. 
 
