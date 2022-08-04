@@ -1,0 +1,14 @@
+{
+  "name": "mouse-tracker",
+  "version": "1.0.0",
+  "description": "![mouse_tracker](https://user-images.githubusercontent.com/46613983/180634185-b79cdda1-08b6-4a36-944a-03ce4721aee2.gif)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.7.4"
+  }
+}
